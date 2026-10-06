@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Sources - Heatwave Intelligence System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Heatwave Intelligence System</h1>
+        <p>Climate Intelligence for Heatwave Monitoring, Prediction, and Early Warning &bull; IMD Pune Data &amp; IoT AWS</p>
+    </header>
+
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="alert-details.html">Alert Bulletin</a>
+        <a href="about-system.html">About System</a>
+        <a href="sources.html" class="active">Data Sources</a>
+        <a href="forecast.html">Forecast</a>
+        <a href="hotspot-map.html">Hotspot Map</a>
+        <a href="subscribe.html">Subscribe</a>
+        <a href="heatwave-form.html">AWS Field Form</a>
+        <a href="navigation.html">Navigation</a>
+        <a href="media.html">Media</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>Climatological &amp; Meteorological Data Sources</h2>
+        <p>Our analytics engine integrates multiple validated observational feeds to provide dependable early-warning metrics.</p>
+
+        <!-- 1. Ordered List: Forecast/Alert Workflow Steps -->
+        <div class="card" style="margin-bottom: 20px;">
+            <h3>1. Heatwave Early Warning Operational Workflow (Ordered List)</h3>
+            <ol style="line-height: 1.8; padding-left: 20px;">
+                <li><b>Sensory Data Collection:</b> Automated Weather Stations (<abbr title="Automated Weather Station">AWS</abbr>) transmit 15-minute telemetry.</li>
+                <li><b>Satellite Data Synchronization:</b> INSAT-3D thermal land-surface scans calibrated with regional baselines.</li>
+                <li><b>Heat Index &amp; Threshold Evaluation:</b> Mathematical computation of apparent temperature and anomalies.</li>
+                <li><b>Severity Classification:</b> Algorithmic categorisation into Green, Yellow, Orange, or Red alerts.</li>
+                <li><b>Emergency Multi-Channel Broadcast:</b> Real-time dispatch of localized bulletins to stakeholders and citizens.</li>
+            </ol>
+        </div>
+
+        <!-- 2. Unordered List: Primary Meteorological Data Sources -->
+        <div class="card" style="margin-bottom: 20px;">
+            <h3>2. Primary Data Ingestion Sources (Unordered List)</h3>
+            <ul style="line-height: 1.8; padding-left: 20px;">
+                <li><b>AWS Ground Sensors:</b> Precision thermistors, hygrometers, and pyranometers.</li>
+                <li><b>IMD Pune Synoptic Database:</b> Official climatological normals, surface observatories, and Doppler radar maps.</li>
+                <li><b>ISRO Geostationary Satellite Feeds:</b> INSAT-3D/3DR land surface temperature (LST) and NDVI telemetry.</li>
+                <li><b>Numerical Weather Prediction Models:</b> GFS, ECMWF, and regional WRF atmospheric ensemble models.</li>
+            </ul>
+        </div>
+
+        <!-- 3. Nested List: Stakeholder Roles & Permitted Actions -->
+        <div class="card" style="margin-bottom: 20px;">
+            <h3>3. Stakeholder Roles &amp; Action Matrix (Nested List)</h3>
+            <ul style="line-height: 1.8; padding-left: 20px;">
+                <li>
+                    <b>Disaster Management Authorities (NDMA / SDMA)</b>
+                    <ul style="list-style-type: circle; padding-left: 20px;">
+                        <li>Declare municipal emergency protocols and cooling shelters.</li>
+                        <li>Enact work hour restrictions for heavy outdoor construction labor.</li>
+                        <li>Mobilize emergency water tankers to urban heat islands.</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Public Health &amp; Trauma Centers</b>
+                    <ul style="list-style-type: circle; padding-left: 20px;">
+                        <li>Prepare dedicated heat-stroke emergency triage units and saline supplies.</li>
+                        <li>Track hospital admissions for dehydration and heat exhaustion.</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>General Public &amp; Vulnerable Communities</b>
+                    <ul style="list-style-type: circle; padding-left: 20px;">
+                        <li>Subscribe to real-time SMS/WhatsApp warning bulletins.</li>
+                        <li>Adopt hydration measures and restrict peak-hour outdoor exposure.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 4. Description List (<dl>): Technical Abbreviations -->
+        <div class="card" style="margin-bottom: 20px;">
+            <h3>4. Meteorological Nomenclature &amp; Abbreviations (Description List)</h3>
+            <dl style="line-height: 1.8; padding-left: 10px;">
+                <dt style="font-weight: bold; color: #e65100;">AWS</dt>
+                <dd style="margin-left: 20px; margin-bottom: 8px;"><b>Automated Weather Station</b> — An autonomous meteorological telemetry unit collecting temperature, humidity, and radiation data at high frequency.</dd>
+
+                <dt style="font-weight: bold; color: #e65100;">IMD</dt>
+                <dd style="margin-left: 20px; margin-bottom: 8px;"><b>India Meteorological Department</b> — The principal national agency in charge of meteorological observations, weather forecasting, and seismology.</dd>
+
+                <dt style="font-weight: bold; color: #e65100;">HW</dt>
+                <dd style="margin-left: 20px; margin-bottom: 8px;"><b>Heat Wave</b> — A period of abnormally high temperatures, typically 4.5°C to 6.4°C above normal seasonal baselines.</dd>
+
+                <dt style="font-weight: bold; color: #e65100;">SHW</dt>
+                <dd style="margin-left: 20px; margin-bottom: 8px;"><b>Severe Heat Wave</b> — An extreme meteorological state where maximum temperatures exceed 45°C or depart by &gt; 6.4°C from climatological normal.</dd>
+            </dl>
+        </div>
+
+        <h3>Monitored Climatological Parameters</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Sensor / Source</th>
+                    <th>Unit of Measurement</th>
+                    <th>Threshold Criterion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dry Bulb Temperature (Tmax)</td>
+                    <td>Pt100 RTD Sensor</td>
+                    <td>Degrees Celsius (°C)</td>
+                    <td>&ge; 40.0 °C (Plains) / &ge; 30.0 °C (Hills)</td>
+                </tr>
+                <tr>
+                    <td>Relative Humidity (RH)</td>
+                    <td>Capacitive Polymer Sensor</td>
+                    <td>Percentage (%)</td>
+                    <td>&ge; 60 % (Combined with high temp)</td>
+                </tr>
+                <tr>
+                    <td>Heat Index (HI)</td>
+                    <td>Rothfusz Multivariate Algorithm</td>
+                    <td>Apparent Temperature (°C)</td>
+                    <td>&ge; 54 °C (Extreme Danger)</td>
+                </tr>
+                <tr>
+                    <td>Solar Radiation</td>
+                    <td>Silicon Pyranometer</td>
+                    <td>Watts / sq. meter (W/m²)</td>
+                    <td>&ge; 900 W/m² (Peak UV exposure)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; Heatwave Intelligence &amp; Early Warning System &bull; Meteorological Monitoring &amp; Public Safety</p>
+    </footer>
+</body>
+</html>

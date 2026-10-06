@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diurnal Series Analytics - Heatwave Intelligence System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Heatwave Intelligence System</h1>
+        <p>Diurnal Temperature Series Analytics &amp; Statistical Aggregations</p>
+    </header>
+
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="navigation.html">All Modules</a>
+        <a href="heatwave_analysis.html">Temperature Analysis</a>
+        <a href="heatwave_warning.html">Warning Engine</a>
+        <a href="climate_object.html">Station Model</a>
+        <a href="temperature_analysis.html" class="active">Readings Analytics</a>
+        <a href="climate_validation.html">User Registration</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>Diurnal Temperature Series Statistical Analysis</h2>
+        <p>
+            Processes sequential automated weather station (AWS) hourly readings to compute statistical minimums, maximums, averages, and threshold departures.
+        </p>
+
+        <div class="card">
+            <h3>Hourly Temperature Series Array</h3>
+            <p style="font-family: monospace; font-size: 15px; background: #fff8e1; padding: 10px; border-radius: 4px; border: 1px solid #ffe082;">
+                let temperatureReadings = [<span id="rawArrayDisplay">34, 36, 38, 39, 41, 40, 37, 35, 39, 42</span>];
+            </p>
+            <div style="margin: 15px 0;">
+                <label for="newTempInput"><b>Append Hourly Observation (°C):</b></label>
+                <input type="number" step="0.1" id="newTempInput" placeholder="e.g. 43.5" style="max-width: 140px; margin-right: 10px;">
+                <button type="button" onclick="addReading()">Add to Array</button>
+                <button type="button" onclick="resetArray()" style="background-color: #757575;">Reset Default Array</button>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 20px; background-color: #fffbf2; border: 2px solid #ff9800;">
+            <h3>📊 Statistical Evaluation Results</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Metric / Operation</th>
+                        <th>Computed Value</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody id="statsTableBody">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+            <h3>Console Log Verification</h3>
+            <p>View the console (<code>F12 &rarr; Console</code>) to verify the output formatting and numerical arrays.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Heatwave Intelligence &amp; Early Warning System &bull; Meteorological Monitoring &amp; Public Safety</p>
+    </footer>
+
+    <script>
+        // Initial Dataset
+        let defaultReadings = [34, 36, 38, 39, 41, 40, 37, 35, 39, 42];
+        let temperatureReadings = [...defaultReadings];
+        let heatwaveThreshold = 37.0;
+
+        function runArrayAnalysis() {
+            // Update raw array text
+            document.getElementById('rawArrayDisplay').innerText = temperatureReadings.join(', ');
+
+            // 1. Display all temperature readings
+            let allReadingsStr = temperatureReadings.join(' ');
+
+            // 2. Minimum Temperature
+            let minTemp = temperatureReadings[0];
+            for (let i = 1; i < temperatureReadings.length; i++) {
+                if (temperatureReadings[i] < minTemp) {
+                    minTemp = temperatureReadings[i];
+                }
+            }
+
+            // 3. Maximum Temperature
+            let maxTemp = temperatureReadings[0];
+            for (let i = 1; i < temperatureReadings.length; i++) {
+                if (temperatureReadings[i] > maxTemp) {
+                    maxTemp = temperatureReadings[i];
+                }
+            }
+
+            // 4. Average Temperature
+            let sum = 0;
+            for (let i = 0; i < temperatureReadings.length; i++) {
+                sum += temperatureReadings[i];
+            }
+            let avgTemp = (sum / temperatureReadings.length).toFixed(1);
+
+            // 5. Count of readings above heatwave threshold (> 37°C)
+            let aboveThresholdCount = 0;
+            for (let i = 0; i < temperatureReadings.length; i++) {
+                if (temperatureReadings[i] > heatwaveThreshold) {
+                    aboveThresholdCount++;
+                }
+            }
+
+            // 6. Count of readings >= 40°C
+            let severeCount = 0;
+            let severeReadings = [];
+            for (let i = 0; i < temperatureReadings.length; i++) {
+                if (temperatureReadings[i] >= 40) {
+                    severeCount++;
+                    severeReadings.push(temperatureReadings[i]);
+                }
+            }
+
+            // 7. High heat condition readings (>= 40°C)
+            let severeReadingsStr = severeReadings.join(', ');
+
+            // Console Output
+            console.clear();
+            console.log("=== Temperature Readings Array Analysis ===");
+            console.log("Temperature Readings:\n" + allReadingsStr);
+            console.log("Minimum Temperature: " + minTemp + "°C");
+            console.log("Maximum Temperature: " + maxTemp + "°C");
+            console.log("Average Temperature: " + avgTemp + "°C");
+            console.log("Readings > Threshold (" + heatwaveThreshold + "°C): " + aboveThresholdCount);
+            console.log("Readings ≥ 40°C: " + severeCount);
+            console.log("Heatwave Condition Readings: " + severeReadingsStr);
+
+            // Populate Table in DOM
+            let tbodyHtml = `
+                <tr>
+                    <td><b>1. All Temperature Readings</b></td>
+                    <td><code>${allReadingsStr}</code></td>
+                    <td>Total of ${temperatureReadings.length} sequential readings</td>
+                </tr>
+                <tr>
+                    <td><b>2. Minimum Temperature</b></td>
+                    <td><b>${minTemp} °C</b></td>
+                    <td>Lowest diurnal temperature recorded</td>
+                </tr>
+                <tr>
+                    <td><b>3. Maximum Temperature</b></td>
+                    <td><b style="color:#d32f2f;">${maxTemp} °C</b></td>
+                    <td>Peak solar thermal reading</td>
+                </tr>
+                <tr>
+                    <td><b>4. Average Temperature</b></td>
+                    <td><b>${avgTemp} °C</b></td>
+                    <td>Mean regional temperature</td>
+                </tr>
+                <tr>
+                    <td><b>5. Readings &gt; Threshold (${heatwaveThreshold}°C)</b></td>
+                    <td><b>${aboveThresholdCount}</b> readings</td>
+                    <td>Threshold departure instances</td>
+                </tr>
+                <tr>
+                    <td><b>6. Readings &ge; 40°C</b></td>
+                    <td><b style="color:#d32f2f;">${severeCount}</b> readings</td>
+                    <td>Severe heatwave warning criteria met</td>
+                </tr>
+                <tr>
+                    <td><b>7. Heatwave Condition Readings (&ge; 40°C)</b></td>
+                    <td><span class="badge-severe">${severeReadingsStr}</span></td>
+                    <td>High Heat Warning values</td>
+                </tr>
+            `;
+
+            document.getElementById('statsTableBody').innerHTML = tbodyHtml;
+        }
+
+        function addReading() {
+            let val = parseFloat(document.getElementById('newTempInput').value);
+            if (!isNaN(val) && val >= 0 && val <= 60) {
+                temperatureReadings.push(val);
+                document.getElementById('newTempInput').value = '';
+                runArrayAnalysis();
+            } else {
+                alert("Please enter a valid temperature reading between 0 and 60 °C.");
+            }
+        }
+
+        function resetArray() {
+            temperatureReadings = [...defaultReadings];
+            runArrayAnalysis();
+        }
+
+        window.onload = function() {
+            runArrayAnalysis();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Station Object Model - Heatwave Intelligence System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Heatwave Intelligence System</h1>
+        <p>Automated Weather Station (AWS) Object Model &amp; Member Methods</p>
+    </header>
+
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="navigation.html">All Modules</a>
+        <a href="heatwave_analysis.html">Temperature Analysis</a>
+        <a href="heatwave_warning.html">Warning Engine</a>
+        <a href="climate_object.html" class="active">Station Model</a>
+        <a href="temperature_analysis.html">Readings Analytics</a>
+        <a href="climate_validation.html">User Registration</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>Automated Weather Station (AWS) Object Model</h2>
+        <p>
+            Demonstrates Object-Oriented JavaScript data modeling using station properties, member methods, and state encapsulation.
+        </p>
+
+        <div class="grid-2col">
+            <div class="card">
+                <h3>Station Controller &amp; Properties</h3>
+                <p>Modify object state dynamically:</p>
+                <form id="objectController" onsubmit="updateStationObject(event)">
+                    <label for="objCity">City / Station Name:</label><br>
+                    <input type="text" id="objCity" value="Mumbai" required><br><br>
+
+                    <label for="objTemp">Observed Temp (°C):</label><br>
+                    <input type="number" step="0.1" id="objTemp" value="39.5" required><br><br>
+
+                    <label for="objHum">Humidity (%):</label><br>
+                    <input type="number" id="objHum" value="65" required><br><br>
+
+                    <label for="objWind">Wind Speed (km/h):</label><br>
+                    <input type="number" id="objWind" value="12" required><br><br>
+
+                    <label for="objStatus">Alert Status:</label><br>
+                    <select id="objStatus">
+                        <option value="Active">Active</option>
+                        <option value="Standby">Standby</option>
+                        <option value="Under Review">Under Review</option>
+                        <option value="Deactivated">Deactivated</option>
+                    </select><br><br>
+
+                    <input type="submit" value="Update &amp; Execute Methods">
+                </form>
+            </div>
+
+            <div class="card" style="background-color: #fffbf2;">
+                <h3>📦 Object Methods Execution</h3>
+                <div id="objectCardDisplay" style="font-family: monospace; font-size: 14px; line-height: 1.8;"></div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+            <h3>Console Output Verification</h3>
+            <p>Open Developer Tools Console (<code>F12</code>) to see the execution of <code>climateData.displayData()</code> and method outputs.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Heatwave Intelligence &amp; Early Warning System &bull; Meteorological Monitoring &amp; Public Safety</p>
+    </footer>
+
+    <script>
+        // Definition of JavaScript Climate Monitoring Object using Object Literal
+        let climateData = {
+            locationName: "AWS-West Coast Station",
+            city: "Mumbai",
+            temperature: 39.5,
+            humidity: 65,
+            windSpeed: 12,
+            forecastTemperature: 41.0,
+            riskLevel: "High",
+            alertStatus: "Active",
+            monitoringDate: new Date().toISOString().split('T')[0],
+
+            // Method 1: Display complete climate information
+            displayData: function() {
+                console.log("=== Climate Data Object ===");
+                console.log("Location: " + this.locationName + " (" + this.city + ")");
+                console.log("Temperature: " + this.temperature + "°C");
+                console.log("Humidity: " + this.humidity + "%");
+                console.log("Wind Speed: " + this.windSpeed + " km/h");
+                console.log("Forecast Temp: " + this.forecastTemperature + "°C");
+                console.log("Risk Level: " + this.riskLevel);
+                console.log("Alert Status: " + this.alertStatus);
+                console.log("Monitoring Date: " + this.monitoringDate);
+            },
+
+            // Method 2: Calculate temperature difference from threshold
+            getTempDifference: function(threshold) {
+                return (this.temperature - threshold).toFixed(1);
+            },
+
+            // Method 3: Determine heatwave risk level
+            determineRiskLevel: function() {
+                if (this.temperature >= 40) {
+                    this.riskLevel = "Severe (Red Alert)";
+                } else if (this.temperature >= 38 && this.humidity >= 60) {
+                    this.riskLevel = "High Heat Risk (Orange Alert)";
+                } else if (this.temperature >= 35) {
+                    this.riskLevel = "Moderate (Yellow Watch)";
+                } else {
+                    this.riskLevel = "Normal (Green)";
+                }
+                return this.riskLevel;
+            },
+
+            // Method 4: Display early warning status
+            displayEarlyWarning: function() {
+                return (this.forecastTemperature >= 40 || this.temperature >= 38) 
+                    ? "⚠️ Early Warning Activated: Extreme Thermal Spike Expected" 
+                    : "✓ Baseline Normal: Regular Monitoring";
+            },
+
+            // Method 5: Update alert status
+            updateAlertStatus: function(newStatus) {
+                this.alertStatus = newStatus;
+                return this.alertStatus;
+            }
+        };
+
+        function renderObjectUI() {
+            // Recalculate object methods
+            var risk = climateData.determineRiskLevel();
+            var diff = climateData.getTempDifference(37.0);
+            var earlyWarn = climateData.displayEarlyWarning();
+
+            climateData.displayData();
+
+            var html = "<b>Station Object State:</b><br>" +
+                       "--------------------------------<br>" +
+                       "<b>climateData.city:</b> " + climateData.city + "<br>" +
+                       "<b>climateData.temperature:</b> " + climateData.temperature + " °C<br>" +
+                       "<b>climateData.humidity:</b> " + climateData.humidity + " %<br>" +
+                       "<b>climateData.windSpeed:</b> " + climateData.windSpeed + " km/h<br>" +
+                       "<b>climateData.monitoringDate:</b> " + climateData.monitoringDate + "<br>" +
+                       "<b>climateData.alertStatus:</b> " + climateData.alertStatus + "<br>" +
+                       "<br><b>Method Evaluations:</b><br>" +
+                       "--------------------------------<br>" +
+                       "<b>getTempDifference(37.0):</b> " + (diff > 0 ? "+" : "") + diff + " °C<br>" +
+                       "<b>determineRiskLevel():</b> " + risk + "<br>" +
+                       "<b>displayEarlyWarning():</b> " + earlyWarn + "<br>";
+
+            document.getElementById('objectCardDisplay').innerHTML = html;
+        }
+
+        function updateStationObject(e) {
+            if(e) e.preventDefault();
+            climateData.city = document.getElementById('objCity').value;
+            climateData.temperature = parseFloat(document.getElementById('objTemp').value);
+            climateData.humidity = parseFloat(document.getElementById('objHum').value);
+            climateData.windSpeed = parseFloat(document.getElementById('objWind').value);
+            climateData.updateAlertStatus(document.getElementById('objStatus').value);
+            renderObjectUI();
+        }
+
+        window.onload = function() {
+            renderObjectUI();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fffdf5;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #d84315;
+    margin-top: 18px;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+h1 { font-size: 24px; }
+h2 { font-size: 20px; border-bottom: 2px solid #ffe0b2; padding-bottom: 4px; }
+h3 { font-size: 16px; }
+
+p {
+    color: #333333;
+    margin: 10px 0;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #7b1fa2;
+}
+
+/* Header */
+#header, header {
+    background-color: #e65100;
+    padding: 14px 20px;
+    text-align: center;
+    color: #ffffff;
+    border-bottom: 3px solid #d84315;
+    width: 100%;
+}
+
+#header h1, header h1 {
+    color: #ffffff;
+    margin: 0 0 4px 0;
+    font-size: 26px;
+    letter-spacing: 0.5px;
+}
+
+#header p, header p {
+    color: #ffe0b2;
+    margin: 0;
+    font-size: 13px;
+}
+
+/* Main Container */
+.main-content {
+    flex: 1 0 auto;
+    width: 88%;
+    max-width: 950px;
+    margin: 24px auto;
+    background-color: #ffffff;
+    padding: 24px 30px;
+    border: 1px solid #ffcc80;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Footer */
+footer {
+    flex-shrink: 0;
+    background-color: #e65100;
+    color: #ffffff;
+    padding: 12px 20px;
+    margin-top: 35px;
+    text-align: center;
+    font-size: 13px;
+    border-top: 2px solid #d84315;
+}
+
+footer p {
+    color: #ffffff;
+    margin: 3px 0;
+}
+
+/* Quick badges & highlights */
+.badge-severe { background-color: #d32f2f; color: #fff; padding: 2px 8px; border-radius: 3px; font-weight: bold; }
+.badge-warning { background-color: #f57c00; color: #fff; padding: 2px 8px; border-radius: 3px; font-weight: bold; }
+.badge-watch { background-color: #fbc02d; color: #333; padding: 2px 8px; border-radius: 3px; font-weight: bold; }
+.badge-normal { background-color: #388e3c; color: #fff; padding: 2px 8px; border-radius: 3px; font-weight: bold; }

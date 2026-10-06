@@ -1,0 +1,112 @@
+fieldset {
+    border: 1.5px solid #ff9800;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+    background-color: #fffbf2;
+}
+
+legend {
+    font-weight: bold;
+    color: #e65100;
+    padding: 0 8px;
+    font-size: 15px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 13.5px;
+    color: #444;
+    display: inline-block;
+    margin-bottom: 2px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+input[type="password"],
+select,
+textarea {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 4px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 380px;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #e65100;
+    outline: none;
+    box-shadow: 0 0 5px rgba(230, 81, 0, 0.3);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 6px;
+    transform: scale(1.1);
+    vertical-align: middle;
+}
+
+.checkbox-group {
+    margin: 8px 0 12px 0;
+    line-height: 1.8;
+}
+
+.error {
+    color: #d32f2f;
+    font-size: 13px;
+    margin-left: 8px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+input[type="submit"],
+input[type="reset"],
+button,
+.btn {
+    background-color: #e65100;
+    color: #ffffff;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: background-color 0.2s, transform 0.1s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+input[type="reset"] {
+    background-color: #757575;
+}
+
+input[type="submit"]:hover, button:hover, .btn:hover {
+    background-color: #bf360c;
+    transform: translateY(-1px);
+}
+
+input[type="reset"]:hover {
+    background-color: #555555;
+}
+
+#successMsg {
+    background-color: #e8f5e9;
+    border: 2px solid #4caf50;
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin-top: 20px;
+}
+
+#successMsg h3 {
+    color: #2e7d32;
+    margin-top: 0;
+}

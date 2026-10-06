@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Observation Form - Heatwave Intelligence System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Heatwave Intelligence System</h1>
+        <p>Climate Intelligence for Heatwave Monitoring, Prediction, and Early Warning &bull; IMD Pune Data &amp; IoT AWS</p>
+    </header>
+
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="alert-details.html">Alert Bulletin</a>
+        <a href="about-system.html">About System</a>
+        <a href="sources.html">Data Sources</a>
+        <a href="forecast.html">Forecast</a>
+        <a href="hotspot-map.html">Hotspot Map</a>
+        <a href="subscribe.html">Subscribe</a>
+        <a href="heatwave-form.html" class="active">AWS Field Form</a>
+        <a href="navigation.html">Navigation</a>
+        <a href="media.html">Media</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>Automated Weather Station (AWS) Observation &amp; Validation Form</h2>
+        <p>
+            Field meteorological observers must submit daily sensory observations through this validated interface to update regional heatwave alert indices.
+        </p>
+
+        <form id="heatwaveForm" onsubmit="validateForm(event)" novalidate>
+            <fieldset>
+                <legend>Observer Information</legend>
+                <label for="name">Observer Name * :</label><br>
+                <input type="text" id="name" name="name" placeholder="e.g. Rahul Sharma" autocomplete="off">
+                <span id="nameErr" class="error"></span>
+                <br><br>
+                <label for="email">Email Address * :</label><br>
+                <input type="email" id="email" name="email" placeholder="e.g. observer@imd.gov.in" autocomplete="off">
+                <span id="emailErr" class="error"></span>
+                <br><br>
+                <label for="mobile">Mobile Number * :</label><br>
+                <input type="tel" id="mobile" name="mobile" maxlength="10" placeholder="10 digit Indian number" autocomplete="off">
+                <span id="mobileErr" class="error"></span>
+            </fieldset>
+
+            <fieldset>
+                <legend>Station &amp; Location</legend>
+                <label for="stationId">AWS Station ID * :</label><br>
+                <input type="text" id="stationId" name="stationId" placeholder="e.g. AWS001" autocomplete="off">
+                <span id="stationErr" class="error"></span>
+                <br><br>
+                <label for="location">Select Region * :</label><br>
+                <select id="location" name="location">
+                    <option value="">-- Select Region --</option>
+                    <option value="North Zone">North Zone</option>
+                    <option value="Central Zone">Central Zone</option>
+                    <option value="West Zone">West Zone</option>
+                    <option value="South Zone">South Zone</option>
+                </select>
+                <span id="locErr" class="error"></span>
+            </fieldset>
+
+            <fieldset>
+                <legend>Weather Observation Data</legend>
+                <label for="obsDate">Observation Date * :</label><br>
+                <input type="date" id="obsDate" name="obsDate">
+                <span id="dateErr" class="error"></span>
+                <br><br>
+                <label for="temp">Max Temperature (°C) * :</label><br>
+                <input type="number" id="temp" name="temp" step="0.1" placeholder="e.g. 42.5" autocomplete="off">
+                <span id="tempErr" class="error"></span>
+                <br><br>
+                <label for="humidity">Relative Humidity (%) * :</label><br>
+                <input type="number" id="humidity" name="humidity" min="0" max="100" placeholder="e.g. 35" autocomplete="off">
+                <span id="humErr" class="error"></span>
+                <br><br>
+                <label for="alertLevel">Heatwave Alert Level * :</label><br>
+                <select id="alertLevel" name="alertLevel">
+                    <option value="">-- Select Alert Level --</option>
+                    <option value="Normal (Green)">Normal (Green)</option>
+                    <option value="Watch (Yellow)">Watch (Yellow)</option>
+                    <option value="Alert (Orange)">Alert (Orange)</option>
+                    <option value="Warning (Red)">Warning (Red)</option>
+                </select>
+                <span id="alertErr" class="error"></span>
+            </fieldset>
+
+            <br>
+            <input type="submit" value="Submit Observation">
+            <input type="reset" value="Reset Form">
+        </form>
+
+        <div id="successMsg" style="display: none;">
+            <h3>✓ Observation Submitted Successfully!</h3>
+            <p>Your meteorological data has been validated and recorded into the Climate Intelligence repository.</p>
+            <table class="result-table">
+                <tr><td><b>Observer Name:</b></td><td id="resultName"></td></tr>
+                <tr><td><b>Email:</b></td><td id="resultEmail"></td></tr>
+                <tr><td><b>Mobile:</b></td><td id="resultMobile"></td></tr>
+                <tr><td><b>Station ID:</b></td><td id="resultStation"></td></tr>
+                <tr><td><b>Region:</b></td><td id="resultLoc"></td></tr>
+                <tr><td><b>Observation Date:</b></td><td id="resultDate"></td></tr>
+                <tr><td><b>Max Temperature:</b></td><td id="resultTemp"></td></tr>
+                <tr><td><b>Relative Humidity:</b></td><td id="resultHum"></td></tr>
+                <tr><td><b>Alert Level:</b></td><td id="resultAlert"></td></tr>
+            </table>
+            <br>
+            <button type="button" onclick="location.reload()">Submit Another Response</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Heatwave Intelligence &amp; Early Warning System &bull; Meteorological Monitoring &amp; Public Safety</p>
+    </footer>
+
+    <script src="validation.js"></script>
+</body>
+</html>

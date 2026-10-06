@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe - Heatwave Intelligence System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Heatwave Intelligence System</h1>
+        <p>Climate Intelligence for Heatwave Monitoring, Prediction, and Early Warning &bull; IMD Pune Data &amp; IoT AWS</p>
+    </header>
+
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="alert-details.html">Alert Bulletin</a>
+        <a href="about-system.html">About System</a>
+        <a href="sources.html">Data Sources</a>
+        <a href="forecast.html">Forecast</a>
+        <a href="hotspot-map.html">Hotspot Map</a>
+        <a href="subscribe.html" class="active">Subscribe</a>
+        <a href="heatwave-form.html">AWS Field Form</a>
+        <a href="navigation.html">Navigation</a>
+        <a href="media.html">Media</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>Public Heatwave Advisory Subscription Portal</h2>
+        <p>
+            Subscribe to receive automated meteorological alerts, threshold breach notices, and regional health advisories via SMS, Email, and WhatsApp.
+        </p>
+        <p style="background-color: #fff3e0; padding: 10px 14px; border-left: 4px solid #e65100; border-radius: 4px; font-size: 13.5px;">
+            <b>Looking for AWS Station Observation Entry?</b> If you are a field observer entering meteorological sensor data with real-time JavaScript validation, please visit the <a href="heatwave-form.html" style="font-weight: bold; color: #e65100;">AWS Field Monitoring &amp; Validation Form</a>.
+        </p>
+
+        <form action="#" method="get" onsubmit="alert('Subscription recorded successfully!'); return false;">
+            <fieldset>
+                <legend>Personal &amp; Contact Details</legend>
+                <label for="subName">Full Name :</label><br>
+                <input type="text" id="subName" name="subName" placeholder="e.g. Rahul Sharma" required>
+                <br><br>
+                <label for="subEmail">Email Address :</label><br>
+                <input type="email" id="subEmail" name="subEmail" placeholder="e.g. rahul@example.com" required>
+                <br><br>
+                <label for="subMobile">Mobile Number :</label><br>
+                <input type="tel" id="subMobile" name="subMobile" maxlength="10" placeholder="10-digit mobile number" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Region &amp; Alert Preferences</legend>
+                <label for="subRegion">Select Monitored Region * :</label><br>
+                <select id="subRegion" name="subRegion" required>
+                    <option value="">-- Select Region --</option>
+                    <option value="North Zone">North Zone</option>
+                    <option value="Central Zone">Central Zone</option>
+                    <option value="West Zone">West Zone</option>
+                    <option value="South Zone">South Zone</option>
+                </select>
+                <br><br>
+                <label>Preferred Alert Language (Radio) * :</label><br>
+                <div class="checkbox-group">
+                    <input type="radio" id="langEn" name="language" value="English" checked>
+                    <label for="langEn" style="font-weight: normal; margin-right: 15px;">English</label>
+                    <input type="radio" id="langHi" name="language" value="Hindi">
+                    <label for="langHi" style="font-weight: normal; margin-right: 15px;">Hindi (हिंदी)</label>
+                    <input type="radio" id="langMr" name="language" value="Marathi">
+                    <label for="langMr" style="font-weight: normal;">Marathi (मराठी)</label>
+                </div>
+
+                <label>Select Alert Types Desired (Checkbox) * :</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="altDaily" name="alert" value="daily" checked>
+                    <label for="altDaily">Daily Maximum Temperature Bulletin</label><br>
+                    <input type="checkbox" id="altHw" name="alert" value="hw">
+                    <label for="altHw">Heat Wave (HW) Orange Warnings</label><br>
+                    <input type="checkbox" id="altShw" name="alert" value="shw" checked>
+                    <label for="altShw">Severe Heat Wave (SHW) Red Alerts</label><br>
+                    <input type="checkbox" id="altHealth" name="alert" value="health">
+                    <label for="altHealth">Health &amp; Vulnerability Advisories</label><br>
+                    <input type="checkbox" id="altAgri" name="alert" value="farmer">
+                    <label for="altAgri">Agricultural &amp; Livestock Heat Advisory</label>
+                </div>
+
+                <label for="subDate">Subscribe From Date :</label><br>
+                <input type="date" id="subDate" name="fromdate" required>
+            </fieldset>
+
+            <br>
+            <input type="submit" value="Subscribe to Alerts">
+            <input type="reset" value="Reset Form">
+        </form>
+
+        <p><small>* Real-time SMS and email alerts are powered by the Climate Intelligence communication dispatch gateway.</small></p>
+    </div>
+
+    <footer>
+        <p>&copy; Heatwave Intelligence &amp; Early Warning System &bull; Meteorological Monitoring &amp; Public Safety</p>
+    </footer>
+
+    <script>
+        document.getElementById('subDate').value = new Date().toISOString().split('T')[0];
+    </script>
+</body>
+</html>

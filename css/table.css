@@ -1,0 +1,36 @@
+table.data-table, table.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+table.data-table th {
+    background-color: #e65100;
+    color: #ffffff;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid #d84315;
+}
+
+table.data-table td {
+    padding: 8px 14px;
+    border: 1px solid #ffcc80;
+}
+
+table.data-table tr:nth-child(even) {
+    background-color: #fff8e1;
+}
+
+table.data-table tr:hover {
+    background-color: #ffe0b2;
+}
+
+table.result-table td {
+    padding: 7px 12px;
+    border-bottom: 1px solid #c8e6c9;
+    font-size: 14px;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotspot Map - Heatwave Intelligence System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Heatwave Intelligence System</h1>
+        <p>Climate Intelligence for Heatwave Monitoring, Prediction, and Early Warning &bull; IMD Pune Data &amp; IoT AWS</p>
+    </header>
+
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="alert-details.html">Alert Bulletin</a>
+        <a href="about-system.html">About System</a>
+        <a href="sources.html">Data Sources</a>
+        <a href="forecast.html">Forecast</a>
+        <a href="hotspot-map.html" class="active">Hotspot Map</a>
+        <a href="subscribe.html">Subscribe</a>
+        <a href="heatwave-form.html">AWS Field Form</a>
+        <a href="navigation.html">Navigation</a>
+        <a href="media.html">Media</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>Regional Heatwave Thermal Hotspot Map</h2>
+        <p>Interactive satellite-derived thermal risk zones across monitored territories.</p>
+
+        <div class="gallery-container">
+            <div class="gallery-item" style="text-align: center;">
+                <p style="font-weight: 600; color: #e65100; margin-bottom: 8px;">
+                    🗺️ Click on any region on the map below (North, Central, West, South) to open active regional alerts:
+                </p>
+                <img src="assets/region-map.png" usemap="#regionalHotspots" alt="Regional Heatwave Vulnerability Hotspot Map" style="max-height: 380px; width: auto; max-width: 100%; object-fit: contain; margin: 0 auto; display: block; border: 2px solid #ff9800; border-radius: 6px;">
+                
+                <map name="regionalHotspots">
+                    <!-- North Zone Clickable Area -->
+                    <area shape="rect" coords="0,0,300,180" href="alert-details.html" alt="North Zone (Severe Heat Wave Red Alert)" title="North Zone: Click to view Severe Red Alert Details">
+                    <!-- Central Zone Clickable Area -->
+                    <area shape="rect" coords="0,181,300,300" href="alert-details.html" alt="Central Zone (Heat Wave Orange Warning)" title="Central Zone: Click to view Orange Warning Details">
+                    <!-- West Coastal Zone Clickable Area -->
+                    <area shape="rect" coords="0,301,150,450" href="forecast.html" alt="West Coastal Zone (Yellow Watch)" title="West Zone: Click to view Forecast">
+                    <!-- South Zone Clickable Area -->
+                    <area shape="rect" coords="151,301,300,450" href="forecast.html" alt="South Zone (Normal Green)" title="South Zone: Click to view 7-Day Forecast">
+                </map>
+
+                <p style="text-align: center; font-size: 13px; color: #666; margin-top: 8px;">
+                    <i>Fig 1: Satellite Infrared Land Surface Temperature (LST) Anomaly Map with HTML5 &lt;map&gt; &amp; &lt;area&gt; Coordinates</i>
+                </p>
+            </div>
+        </div>
+
+        <h3>Thermal Zone Classifications</h3>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Zone Identifier</th>
+                    <th>Color Code</th>
+                    <th>Observed Anomaly</th>
+                    <th>Active Warning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>North Zone</b></td>
+                    <td><span class="badge-severe">Red Zone</span></td>
+                    <td>+5.8 °C above normal baseline</td>
+                    <td>Severe Heat Wave (SHW)</td>
+                </tr>
+                <tr>
+                    <td><b>Central Zone</b></td>
+                    <td><span class="badge-warning">Orange Zone</span></td>
+                    <td>+4.2 °C above normal baseline</td>
+                    <td>Heat Wave (HW) Warning</td>
+                </tr>
+                <tr>
+                    <td><b>West Coastal Zone</b></td>
+                    <td><span class="badge-watch">Yellow Zone</span></td>
+                    <td>High humidity &amp; heat index</td>
+                    <td>Hot &amp; Humid Discomfort Advisory</td>
+                </tr>
+                <tr>
+                    <td><b>South Zone</b></td>
+                    <td><span class="badge-normal">Green Zone</span></td>
+                    <td>Within seasonal limits (&plusmn;0.5 °C)</td>
+                    <td>Normal Conditions</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><small>* Note: Map displays satellite infrared land surface temperature (LST) anomaly zones.</small></p>
+    </div>
+
+    <footer>
+        <p>&copy; Heatwave Intelligence &amp; Early Warning System &bull; Meteorological Monitoring &amp; Public Safety</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warning Decision Engine - Heatwave Intelligence System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Heatwave Intelligence System</h1>
+        <p>Thermal Risk Assessment &amp; Early-Warning Decision Engine</p>
+    </header>
+
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="navigation.html">All Modules</a>
+        <a href="heatwave_analysis.html">Temperature Analysis</a>
+        <a href="heatwave_warning.html" class="active">Warning Engine</a>
+        <a href="climate_object.html">Station Model</a>
+        <a href="temperature_analysis.html">Readings Analytics</a>
+        <a href="climate_validation.html">User Registration</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>Thermal Risk Assessment &amp; Early-Warning Decision Matrix</h2>
+        <p>
+            Evaluates multi-variable meteorological indicators using structured conditional logic and relational operators to recommend immediate protective actions.
+        </p>
+
+        <div class="grid-2col">
+            <div class="card">
+                <h3>Decision Rules Reference</h3>
+                <table class="data-table" style="font-size: 13px;">
+                    <thead>
+                        <tr>
+                            <th>Condition</th>
+                            <th>Recommendation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Temp &ge; 40°C</td>
+                            <td><span class="badge-severe">Severe Heatwave Warning</span></td>
+                        </tr>
+                        <tr>
+                            <td>Temp &ge; 38°C &amp;&amp; Humidity &ge; 60%</td>
+                            <td><span class="badge-warning">High Heat Risk – Issue Warning</span></td>
+                        </tr>
+                        <tr>
+                            <td>Temp between 35°C and 38°C</td>
+                            <td><span class="badge-watch">Moderate Heat Risk – Monitor Conditions</span></td>
+                        </tr>
+                        <tr>
+                            <td>Forecast Temp &ge; 40°C</td>
+                            <td><span class="badge-warning">Early Warning – Prepare for Heatwave</span></td>
+                        </tr>
+                        <tr>
+                            <td>Temp &lt; 35°C</td>
+                            <td><span class="badge-normal">Normal – Continue Monitoring</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3>Evaluate Regional Conditions</h3>
+                <form id="warningForm" onsubmit="evaluateHeatwaveRisk(event)">
+                    <label for="citySelect">Location / City:</label><br>
+                    <input type="text" id="citySelect" value="Pune" required><br><br>
+
+                    <label for="inTemp">Observed Temperature (°C):</label><br>
+                    <input type="number" step="0.1" id="inTemp" value="39.0" required><br><br>
+
+                    <label for="inHum">Relative Humidity (%):</label><br>
+                    <input type="number" id="inHum" value="65" required><br><br>
+
+                    <label for="inForecast">Forecast Temperature (°C):</label><br>
+                    <input type="number" step="0.1" id="inForecast" value="41.0" required><br><br>
+
+                    <input type="submit" value="Evaluate Risk &amp; Warning">
+                </form>
+            </div>
+        </div>
+
+        <div id="riskResultCard" class="card" style="margin-top: 20px; background-color: #fff3e0; border: 2px solid #e65100;">
+            <h3>🚨 Decision Engine Output</h3>
+            <div id="riskOutput" style="font-size: 15px; line-height: 1.8;"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Heatwave Intelligence &amp; Early Warning System &bull; Meteorological Monitoring &amp; Public Safety</p>
+    </footer>
+
+    <script>
+        function evaluateHeatwaveRisk(e) {
+            if (e) e.preventDefault();
+
+            // 1. Accept climate values
+            var city = document.getElementById('citySelect').value;
+            var temperature = parseFloat(document.getElementById('inTemp').value);
+            var humidity = parseFloat(document.getElementById('inHum').value);
+            var forecastTemp = parseFloat(document.getElementById('inForecast').value);
+
+            var riskLevel = "";
+            var recommendation = "";
+            var badgeClass = "";
+
+            // 2. Decision Logic using if, else if, else and relational/logical operators
+            if (temperature >= 40) {
+                riskLevel = "SEVERE";
+                recommendation = "Severe Heatwave Warning — Avoid outdoor exertion and activate hydration shelters.";
+                badgeClass = "badge-severe";
+            } else if (temperature >= 38 && humidity >= 60) {
+                riskLevel = "HIGH";
+                recommendation = "High Heat Risk – Issue Warning (High Thermal Discomfort).";
+                badgeClass = "badge-warning";
+            } else if (temperature >= 35 && temperature < 38) {
+                riskLevel = "MODERATE";
+                recommendation = "Moderate Heat Risk – Monitor Conditions continuously.";
+                badgeClass = "badge-watch";
+            } else if (forecastTemp >= 40) {
+                riskLevel = "EARLY WARNING";
+                recommendation = "Early Warning – Prepare for Heatwave conditions in next 24-48 hours.";
+                badgeClass = "badge-warning";
+            } else {
+                riskLevel = "NORMAL";
+                recommendation = "Normal – Continue Standard Monitoring.";
+                badgeClass = "badge-normal";
+            }
+
+            // 3. Console Output
+            console.log("=== Heatwave Risk Decision Log ===");
+            console.log("Location: " + city);
+            console.log("Temperature: " + temperature + "°C");
+            console.log("Humidity: " + humidity + "%");
+            console.log("Forecast: " + forecastTemp + "°C");
+            console.log("Risk Level: " + riskLevel);
+            console.log("Recommendation: " + recommendation);
+
+            // 4. Render to DOM
+            var html = "<p><b>Location:</b> " + city + "</p>" +
+                       "<p><b>Observed Temperature:</b> " + temperature + " °C | <b>Humidity:</b> " + humidity + " % | <b>Forecast:</b> " + forecastTemp + " °C</p>" +
+                       "<p><b>Risk Level:</b> <span class='" + badgeClass + "' style='font-size: 14px; padding: 4px 10px;'>" + riskLevel + "</span></p>" +
+                       "<p><b>Official Recommendation:</b> <strong>" + recommendation + "</strong></p>";
+
+            document.getElementById('riskOutput').innerHTML = html;
+        }
+
+        window.onload = function() {
+            evaluateHeatwaveRisk();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecast Summary - Heatwave Intelligence System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Heatwave Intelligence System</h1>
+        <p>Climate Intelligence for Heatwave Monitoring, Prediction, and Early Warning &bull; IMD Pune Data &amp; IoT AWS</p>
+    </header>
+
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="alert-details.html">Alert Bulletin</a>
+        <a href="about-system.html">About System</a>
+        <a href="sources.html">Data Sources</a>
+        <a href="forecast.html" class="active">Forecast</a>
+        <a href="hotspot-map.html">Hotspot Map</a>
+        <a href="subscribe.html">Subscribe</a>
+        <a href="heatwave-form.html">AWS Field Form</a>
+        <a href="navigation.html">Navigation</a>
+        <a href="media.html">Media</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>7-Day Regional Heatwave &amp; Temperature Forecast</h2>
+        <p>Ensemble model forecasts for thermal severity, projected peak temperature, and advisory status.</p>
+
+        <table class="data-table">
+            <caption style="caption-side: top; text-align: left; font-weight: bold; color: #d84315; font-size: 15px; margin-bottom: 8px;">
+                📊 Table 1: 7-Day Regional Heatwave &amp; Temperature Predictive Matrix (IMD &bull; IoT Ensembles)
+            </caption>
+            <thead>
+                <tr>
+                    <th rowspan="2" style="vertical-align: middle;">Day / Date</th>
+                    <th colspan="2" style="text-align: center; background-color: #bf360c;">Temperature Parameters (°C)</th>
+                    <th rowspan="2" style="vertical-align: middle;">Humidity (%)</th>
+                    <th rowspan="2" style="vertical-align: middle;">Heat Index</th>
+                    <th rowspan="2" style="vertical-align: middle;">Advisory Warning</th>
+                </tr>
+                <tr>
+                    <th style="background-color: #d84315;">Predicted Min</th>
+                    <th style="background-color: #d84315;">Predicted Max</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Day 1 (Today)</b></td>
+                    <td>28.5 °C</td>
+                    <td><b>43.2 °C</b></td>
+                    <td>35 %</td>
+                    <td>Extreme Caution</td>
+                    <td><span class="badge-severe">Severe (Red)</span></td>
+                </tr>
+                <tr>
+                    <td><b>Day 2 (Tomorrow)</b></td>
+                    <td>29.0 °C</td>
+                    <td><b>44.0 °C</b></td>
+                    <td>32 %</td>
+                    <td>Danger</td>
+                    <td><span class="badge-severe">Severe (Red)</span></td>
+                </tr>
+                <tr>
+                    <td><b>Day 3</b></td>
+                    <td>28.0 °C</td>
+                    <td><b>42.5 °C</b></td>
+                    <td>38 %</td>
+                    <td>Extreme Caution</td>
+                    <td><span class="badge-warning">Alert (Orange)</span></td>
+                </tr>
+                <tr>
+                    <td><b>Day 4</b></td>
+                    <td>27.5 °C</td>
+                    <td><b>41.0 °C</b></td>
+                    <td>45 %</td>
+                    <td>Caution</td>
+                    <td><span class="badge-warning">Alert (Orange)</span></td>
+                </tr>
+                <tr>
+                    <td><b>Day 5</b></td>
+                    <td>26.0 °C</td>
+                    <td><b>39.5 °C</b></td>
+                    <td>50 %</td>
+                    <td>Moderate</td>
+                    <td><span class="badge-watch">Watch (Yellow)</span></td>
+                </tr>
+                <tr>
+                    <td><b>Day 6</b></td>
+                    <td>25.5 °C</td>
+                    <td><b>37.8 °C</b></td>
+                    <td>55 %</td>
+                    <td>Normal Baseline</td>
+                    <td><span class="badge-watch">Watch (Yellow)</span></td>
+                </tr>
+                <tr>
+                    <td><b>Day 7</b></td>
+                    <td>25.0 °C</td>
+                    <td><b>36.0 °C</b></td>
+                    <td>60 %</td>
+                    <td>Comfortable</td>
+                    <td><span class="badge-normal">Normal (Green)</span></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr style="background-color: #ffe0b2; font-weight: bold; color: #5d4037;">
+                    <td>7-Day Average / Summary</td>
+                    <td>27.07 °C (Avg Min)</td>
+                    <td>40.57 °C (Avg Max)</td>
+                    <td>45.0 % (Avg RH)</td>
+                    <td colspan="2" style="text-align: center;">Elevated Heatwave Risk across 5 of 7 Days</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="card" style="margin-top: 20px;">
+            <h3>Forecast Advisory Summary</h3>
+            <p>
+                A severe heatwave spell is predicted to persist over the next 48 to 72 hours across the central plateau. Residents, agricultural laborers, and outdoor industrial workers are strongly urged to restrict non-essential activities during peak afternoon hours.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Heatwave Intelligence &amp; Early Warning System &bull; Meteorological Monitoring &amp; Public Safety</p>
+    </footer>
+</body>
+</html>

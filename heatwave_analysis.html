@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Analysis - Heatwave Intelligence System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Heatwave Intelligence System</h1>
+        <p>Thermal Anomaly Analytics &amp; Threshold Departure Detection</p>
+    </header>
+
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="navigation.html">All Modules</a>
+        <a href="heatwave_analysis.html" class="active">Temperature Analysis</a>
+        <a href="heatwave_warning.html">Warning Engine</a>
+        <a href="climate_object.html">Station Model</a>
+        <a href="temperature_analysis.html">Readings Analytics</a>
+        <a href="climate_validation.html">User Registration</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>Thermal Anomaly &amp; Heatwave Threshold Analysis</h2>
+        <p>
+            This module evaluates station temperature against climatological heatwave baselines to determine thermal departures and alert classifications.
+        </p>
+
+        <div class="card">
+            <h3>Station Observation Parameters</h3>
+            <form id="analysisForm" onsubmit="runTemperatureAnalysis(event)">
+                <fieldset>
+                    <legend>Thermal Station Inputs</legend>
+                    <label for="locName">Location Name:</label><br>
+                    <input type="text" id="locName" value="Mumbai" required><br><br>
+
+                    <label for="currTemp">Current Temperature (°C):</label><br>
+                    <input type="number" step="0.1" id="currTemp" value="39.0" required><br><br>
+
+                    <label for="threshTemp">Heatwave Threshold (°C):</label><br>
+                    <input type="number" step="0.1" id="threshTemp" value="37.0" required><br><br>
+
+                    <label for="humidityVal">Relative Humidity (%):</label><br>
+                    <input type="number" id="humidityVal" value="65" required><br><br>
+
+                    <label for="monDate">Monitoring Date:</label><br>
+                    <input type="date" id="monDate" required>
+                </fieldset>
+                <br>
+                <input type="submit" value="Calculate Heatwave Status">
+                <button type="button" onclick="triggerAlertDemo()">Show Alert Popup</button>
+            </form>
+        </div>
+
+        <div id="outputCard" class="card" style="margin-top: 20px; background-color: #fff8e1; border: 2px solid #ffa000;">
+            <h3>📊 Analysis Execution Results</h3>
+            <div id="resultDisplay" style="font-family: monospace; font-size: 14.5px; line-height: 1.8;">
+                Click <b>"Calculate Heatwave Status"</b> above to process meteorological variables.
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+            <h3>Console Log Verification</h3>
+            <p>Check browser Developer Tools (<code>F12 &rarr; Console</code>) to view structured JSON/text log outputs.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Heatwave Intelligence &amp; Early Warning System &bull; Meteorological Monitoring &amp; Public Safety</p>
+    </footer>
+
+    <script>
+        // Set today's date by default
+        document.getElementById('monDate').value = new Date().toISOString().split('T')[0];
+
+        function runTemperatureAnalysis(e) {
+            if(e) e.preventDefault();
+
+            // 1. Variable Declarations
+            var locationName = document.getElementById('locName').value;
+            var currentTemp = parseFloat(document.getElementById('currTemp').value);
+            var thresholdTemp = parseFloat(document.getElementById('threshTemp').value);
+            var humidity = parseFloat(document.getElementById('humidityVal').value);
+            var monitoringDate = document.getElementById('monDate').value;
+
+            // 2. Arithmetic Operations
+            var tempDifference = (currentTemp - thresholdTemp).toFixed(1);
+            var isHeatwave = currentTemp >= thresholdTemp;
+            var statusMessage = isHeatwave ? "Heatwave Condition Detected" : "Normal Temperature - No Heatwave";
+
+            // 3. Message Printing via console.log()
+            console.clear();
+            console.log("=== Climate Intelligence: Heatwave Temperature Analysis ===");
+            console.log("Location: " + locationName);
+            console.log("Monitoring Date: " + monitoringDate);
+            console.log("Current Temperature: " + currentTemp + "°C");
+            console.log("Heatwave Threshold: " + thresholdTemp + "°C");
+            console.log("Humidity: " + humidity + "%");
+            console.log("Temperature Difference: " + tempDifference + "°C");
+            console.log("Status: " + statusMessage);
+
+            // 4. Output to DOM
+            var outputHtml = "<b>Location:</b> " + locationName + "<br>" +
+                             "<b>Monitoring Date:</b> " + monitoringDate + "<br>" +
+                             "<b>Current Temperature:</b> " + currentTemp + " °C<br>" +
+                             "<b>Heatwave Threshold:</b> " + thresholdTemp + " °C<br>" +
+                             "<b>Humidity:</b> " + humidity + " %<br>" +
+                             "<b>Temperature Difference:</b> " + (tempDifference > 0 ? "+" : "") + tempDifference + " °C<br>" +
+                             "<b>Status:</b> <span style='font-weight:bold; color:" + (isHeatwave ? "#d32f2f" : "#2e7d32") + "'>" + statusMessage + "</span>";
+
+            document.getElementById('resultDisplay').innerHTML = outputHtml;
+        }
+
+        function triggerAlertDemo() {
+            var locationName = document.getElementById('locName').value;
+            var currentTemp = parseFloat(document.getElementById('currTemp').value);
+            var thresholdTemp = parseFloat(document.getElementById('threshTemp').value);
+            var diff = (currentTemp - thresholdTemp).toFixed(1);
+            var isHeatwave = currentTemp >= thresholdTemp;
+            var status = isHeatwave ? "Heatwave Condition Detected" : "Normal Conditions";
+
+            alert("Location: " + locationName + "\nCurrent Temperature: " + currentTemp + "°C\nHeatwave Threshold: " + thresholdTemp + "°C\nTemperature Difference: " + diff + "°C\nStatus: " + status);
+        }
+
+        // Run once on load
+        window.onload = function() {
+            runTemperatureAnalysis();
+        };
+    </script>
+</body>
+</html>

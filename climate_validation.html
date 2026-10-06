@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User &amp; Observer Registration - Heatwave Intelligence System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/effects.css">
+    <style>
+        .input-error {
+            border: 2px solid #d32f2f !important;
+            background-color: #ffebee !important;
+        }
+        .input-valid {
+            border: 2px solid #388e3c !important;
+            background-color: #f1f8e9 !important;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <h1>Heatwave Intelligence System</h1>
+        <p>Climate Intelligence User &amp; Observer Portal Registration</p>
+    </header>
+
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="navigation.html">All Modules</a>
+        <a href="heatwave_analysis.html">Temperature Analysis</a>
+        <a href="heatwave_warning.html">Warning Engine</a>
+        <a href="climate_object.html">Station Model</a>
+        <a href="temperature_analysis.html">Readings Analytics</a>
+        <a href="climate_validation.html" class="active">User Registration</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>Climate Intelligence User Registration &amp; Early-Warning Dispatch Portal</h2>
+        <p>
+            Validates user details using JavaScript Regular Expressions, date constraints (no future dates), DOM field styling, and error handling.
+        </p>
+
+        <form id="climateRegForm" onsubmit="validateClimateRegistration(event)" novalidate>
+            <fieldset>
+                <legend>1. User Identification</legend>
+                <label for="regName">Full Name * :</label><br>
+                <input type="text" id="regName" name="regName" placeholder="e.g. Rahul Sharma" autocomplete="off">
+                <span id="regNameErr" class="error"></span>
+                <br><br>
+
+                <label for="regUserId">Climate Intelligence User ID * :</label><br>
+                <input type="text" id="regUserId" name="regUserId" placeholder="e.g. CLM-1234" autocomplete="off">
+                <span id="regUserIdErr" class="error"></span>
+                <br><br>
+
+                <label for="regAgeGroup">Age Group * :</label><br>
+                <select id="regAgeGroup" name="regAgeGroup">
+                    <option value="">-- Select Age Group --</option>
+                    <option value="Under 18">Under 18</option>
+                    <option value="18 - 35">18 - 35 (Youth / Working)</option>
+                    <option value="36 - 60">36 - 60 (Adult)</option>
+                    <option value="Above 60">Above 60 (Senior Citizen - High Risk)</option>
+                </select>
+                <span id="regAgeErr" class="error"></span>
+                <br><br>
+
+                <label for="regCategory">User Category * :</label><br>
+                <select id="regCategory" name="regCategory">
+                    <option value="">-- Select Category --</option>
+                    <option value="General Public">General Public</option>
+                    <option value="Senior Citizen">Senior Citizen</option>
+                    <option value="Student">Student</option>
+                    <option value="Outdoor Worker">Outdoor Worker (Construction / Agriculture)</option>
+                    <option value="Healthcare Worker">Healthcare Worker / First Responder</option>
+                    <option value="Government/Disaster Management">Government / Disaster Management</option>
+                    <option value="Other">Other</option>
+                </select>
+                <span id="regCatErr" class="error"></span>
+            </fieldset>
+
+            <fieldset>
+                <legend>2. Contact &amp; Geographic Location</legend>
+                <label for="regMobile">Mobile Number * :</label><br>
+                <input type="tel" id="regMobile" name="regMobile" maxlength="10" placeholder="10-digit Indian number" autocomplete="off">
+                <span id="regMobileErr" class="error"></span>
+                <br><br>
+
+                <label for="regEmail">Email Address * :</label><br>
+                <input type="email" id="regEmail" name="regEmail" placeholder="e.g. rahul@example.com" autocomplete="off">
+                <span id="regEmailErr" class="error"></span>
+                <br><br>
+
+                <label for="regCity">Location / City * :</label><br>
+                <input type="text" id="regCity" name="regCity" placeholder="e.g. Mumbai" autocomplete="off">
+                <span id="regCityErr" class="error"></span>
+                <br><br>
+
+                <label for="regPin">PIN / Postal Code * :</label><br>
+                <input type="text" id="regPin" name="regPin" maxlength="6" placeholder="6-digit PIN e.g. 400077" autocomplete="off">
+                <span id="regPinErr" class="error"></span>
+            </fieldset>
+
+            <fieldset>
+                <legend>3. Alert Preferences &amp; Registration Date</legend>
+                <label for="regChannel">Preferred Alert Channel * :</label><br>
+                <select id="regChannel" name="regChannel">
+                    <option value="">-- Select Channel --</option>
+                    <option value="SMS Text Message">SMS Text Message</option>
+                    <option value="WhatsApp Broadcast">WhatsApp Broadcast</option>
+                    <option value="Email Alert Bulletin">Email Alert Bulletin</option>
+                    <option value="Automated Voice Call">Automated Voice Call (IVR)</option>
+                </select>
+                <span id="regChannelErr" class="error"></span>
+                <br><br>
+
+                <label for="regDate">Registration Date * :</label><br>
+                <input type="date" id="regDate" name="regDate">
+                <span id="regDateErr" class="error"></span>
+            </fieldset>
+
+            <br>
+            <input type="submit" value="Submit Registration">
+            <input type="reset" value="Reset Form" onclick="clearHighlights()">
+        </form>
+
+        <div id="climateSuccessCard" class="card" style="display: none; background-color: #e8f5e9; border: 2px solid #2e7d32; margin-top: 20px;">
+            <h3 style="color: #2e7d32; margin-top: 0;">🎉 Registration Successful!</h3>
+            <p style="font-size: 15px; font-weight: bold; color: #1b5e20;">
+                You are registered for Climate Intelligence Heatwave Monitoring and Early-Warning Alerts.
+            </p>
+            <table class="result-table">
+                <tr><td><b>Full Name:</b></td><td id="outName"></td></tr>
+                <tr><td><b>Climate User ID:</b></td><td id="outUserId"></td></tr>
+                <tr><td><b>Age Group:</b></td><td id="outAge"></td></tr>
+                <tr><td><b>User Category:</b></td><td id="outCat"></td></tr>
+                <tr><td><b>Mobile Number:</b></td><td id="outMobile"></td></tr>
+                <tr><td><b>Email Address:</b></td><td id="outEmail"></td></tr>
+                <tr><td><b>Location / City:</b></td><td id="outCity"></td></tr>
+                <tr><td><b>PIN Code:</b></td><td id="outPin"></td></tr>
+                <tr><td><b>Preferred Alert Channel:</b></td><td id="outChannel"></td></tr>
+                <tr><td><b>Registration Date:</b></td><td id="outDate"></td></tr>
+            </table>
+            <br>
+            <button type="button" onclick="location.reload()">Register Another User</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; Heatwave Intelligence &amp; Early Warning System &bull; Meteorological Monitoring &amp; Public Safety</p>
+    </footer>
+
+    <script>
+        // Set today's date
+        document.getElementById('regDate').value = new Date().toISOString().split('T')[0];
+
+        function clearHighlights() {
+            var inputs = document.querySelectorAll('input, select');
+            inputs.forEach(function(el) {
+                el.classList.remove('input-error');
+                el.classList.remove('input-valid');
+            });
+            var errors = document.querySelectorAll('.error');
+            errors.forEach(function(err) {
+                err.innerHTML = '';
+            });
+        }
+
+        function setFieldError(fieldId, errId, message) {
+            var field = document.getElementById(fieldId);
+            field.classList.remove('input-valid');
+            field.classList.add('input-error');
+            document.getElementById(errId).innerHTML = message;
+            return false;
+        }
+
+        function setFieldValid(fieldId, errId) {
+            var field = document.getElementById(fieldId);
+            field.classList.remove('input-error');
+            field.classList.add('input-valid');
+            document.getElementById(errId).innerHTML = '';
+            return true;
+        }
+
+        function validateClimateRegistration(e) {
+            e.preventDefault();
+            var isValid = true;
+
+            var name = document.getElementById('regName').value.trim();
+            var userId = document.getElementById('regUserId').value.trim();
+            var ageGroup = document.getElementById('regAgeGroup').value;
+            var category = document.getElementById('regCategory').value;
+            var mobile = document.getElementById('regMobile').value.trim();
+            var email = document.getElementById('regEmail').value.trim();
+            var city = document.getElementById('regCity').value.trim();
+            var pin = document.getElementById('regPin').value.trim();
+            var channel = document.getElementById('regChannel').value;
+            var regDate = document.getElementById('regDate').value;
+
+            // 1. Validate User Name (alphabets and spaces only, min 3 chars)
+            if (name === "") {
+                isValid = setFieldError('regName', 'regNameErr', 'User Name is required');
+            } else if (name.length < 3) {
+                isValid = setFieldError('regName', 'regNameErr', 'Must be at least 3 characters');
+            } else if (!/^[A-Za-z ]+$/.test(name)) {
+                isValid = setFieldError('regName', 'regNameErr', 'Only alphabets and spaces allowed');
+            } else {
+                setFieldValid('regName', 'regNameErr');
+            }
+
+            // 2. Validate Climate User ID (Pattern: CLM-1234)
+            if (userId === "") {
+                isValid = setFieldError('regUserId', 'regUserIdErr', 'User ID is required');
+            } else if (!/^CLM-[0-9]{4}$/.test(userId)) {
+                isValid = setFieldError('regUserId', 'regUserIdErr', 'Format must be CLM-1234');
+            } else {
+                setFieldValid('regUserId', 'regUserIdErr');
+            }
+
+            // 3. Validate Age Group
+            if (ageGroup === "") {
+                isValid = setFieldError('regAgeGroup', 'regAgeErr', 'Please select age group');
+            } else {
+                setFieldValid('regAgeGroup', 'regAgeErr');
+            }
+
+            // 4. Validate Category
+            if (category === "") {
+                isValid = setFieldError('regCategory', 'regCatErr', 'Please select user category');
+            } else {
+                setFieldValid('regCategory', 'regCatErr');
+            }
+
+            // 5. Validate Mobile Number (Exactly 10 digits Indian format)
+            if (mobile === "") {
+                isValid = setFieldError('regMobile', 'regMobileErr', 'Mobile number is required');
+            } else if (!/^[6-9][0-9]{9}$/.test(mobile)) {
+                isValid = setFieldError('regMobile', 'regMobileErr', 'Must be a 10-digit Indian number');
+            } else {
+                setFieldValid('regMobile', 'regMobileErr');
+            }
+
+            // 6. Validate Email
+            if (email === "") {
+                isValid = setFieldError('regEmail', 'regEmailErr', 'Email is required');
+            } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email)) {
+                isValid = setFieldError('regEmail', 'regEmailErr', 'Invalid email format');
+            } else {
+                setFieldValid('regEmail', 'regEmailErr');
+            }
+
+            // 7. Validate Location / City
+            if (city === "") {
+                isValid = setFieldError('regCity', 'regCityErr', 'Location/City is required');
+            } else if (!/^[A-Za-z ]+$/.test(city)) {
+                isValid = setFieldError('regCity', 'regCityErr', 'Only alphabets and spaces allowed');
+            } else {
+                setFieldValid('regCity', 'regCityErr');
+            }
+
+            // 8. Validate PIN Code (Exactly 6 digits)
+            if (pin === "") {
+                isValid = setFieldError('regPin', 'regPinErr', 'PIN code is required');
+            } else if (!/^[0-9]{6}$/.test(pin)) {
+                isValid = setFieldError('regPin', 'regPinErr', 'Must be exactly 6 digits');
+            } else {
+                setFieldValid('regPin', 'regPinErr');
+            }
+
+            // 9. Validate Preferred Alert Channel
+            if (channel === "") {
+                isValid = setFieldError('regChannel', 'regChannelErr', 'Please select alert channel');
+            } else {
+                setFieldValid('regChannel', 'regChannelErr');
+            }
+
+            // 10. Validate Registration Date (Not a future date)
+            if (regDate === "") {
+                isValid = setFieldError('regDate', 'regDateErr', 'Registration date is required');
+            } else {
+                var selectedDate = new Date(regDate);
+                var today = new Date();
+                today.setHours(23, 59, 59, 999);
+                if (selectedDate > today) {
+                    isValid = setFieldError('regDate', 'regDateErr', 'Registration date cannot be a future date');
+                } else {
+                    setFieldValid('regDate', 'regDateErr');
+                }
+            }
+
+            // 11. Success handling
+            if (isValid) {
+                document.getElementById('climateRegForm').style.display = 'none';
+                document.getElementById('climateSuccessCard').style.display = 'block';
+
+                document.getElementById('outName').innerText = name;
+                document.getElementById('outUserId').innerText = userId;
+                document.getElementById('outAge').innerText = ageGroup;
+                document.getElementById('outCat').innerText = category;
+                document.getElementById('outMobile').innerText = mobile;
+                document.getElementById('outEmail').innerText = email;
+                document.getElementById('outCity').innerText = city;
+                document.getElementById('outPin').innerText = pin;
+                document.getElementById('outChannel').innerText = channel;
+                document.getElementById('outDate').innerText = regDate;
+
+                console.log("=== Registration Successful ===");
+                console.log({
+                    Name: name,
+                    UserID: userId,
+                    AgeGroup: ageGroup,
+                    Category: category,
+                    Mobile: mobile,
+                    Email: email,
+                    City: city,
+                    PIN: pin,
+                    Channel: channel,
+                    Date: regDate
+                });
+            }
+        }
+    </script>
+</body>
+</html>
